@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1360">
+    <!-- 브라우저 뷰포트 너비를 1360px로 고정하여 페이지를 그리도록 설정 -->
+    <title>CARRYON</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./images/favicon3.png" type="image/x-icon">
+    <!-- webfont 연결-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- 아이콘 링크 연결 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- aos 연결 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- css 연결-->
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body>
+    <div id="wrap">
+
+        <!-- header -->
+        <div class="header">
+            <div class="inner_header">
+                <ul class="gnb_left">
+                    <li><a href="#design">DESIGN & ENGINEERING</a></li>
+                    <li><a href="#flavor">FLAVOR</a></li>
+                </ul>
+                <a href="#">
+                    <h1 class="main_logo">
+                        <img src="./images/logo_main.png" alt="CARRYON logo" data-logo-normal="./images/logo_main.png"
+                            data-logo-small="./images/logo_compact.png">
+                    </h1>
+                </a>
+                <ul class="gnb_right">
+                    <li><a href="#promotion">PROMOTION</a></li>
+                    <li><a href="#community">COMMUNITY</a></li>
+                </ul>
+            </div>
+        </div><!-- header -->
+
+        <!-- main_banner -->
+        <div class="main_banner">
+            <div class="inner_main_banner">
+                <img src="./images/main_banner.jpg" alt="main_banner">
+                <a href="#" class="play_button"><img src="./images/play_button.png" alt="play_button"></a>
+            </div>
+        </div>
+        <!-- 아래부터덮는부분 -->
+        <div class="page_content">
+            <!-- slogoan1 -->
+            <div class="slogan1">
+                <div class="inner_slogan">
+                    <h2>“Carry on your style, Carry on your energy.”</h2>
+                    <p>
+                        휴대성과 퍼포먼스를 겸비한 하이엔드 오브제 드링크, CARRYON
+                    </p>
+                </div>
+            </div><!-- slogan1 -->
+
+            <!--structure  -->
+            <div class="structure" id="design">
+                <div class="inner_structure">
+                    <div class="text_wrap">
+                        <h3 class="title">structure</h3>
+                        <h2 class="sub_title">이중 구조로 지키는 보냉</h2>
+                        <p>보냉기능을 강화한 2중 알루미늄 구조와 상단 핸들 디자인. <br>
+                            휴대성과 기능미의 균형을 맞춘 설계입니다. </p>
+                        <strong>가벼움, 보냉, 그리고 휴대성까지 — 모든 기능이 디자인 안에서 완성됩니다.</strong>
+                        <ul class="feature">
+                            <li><button>보냉 6h</button></li>
+                            <li><button>지속에너지</button></li>
+                            <li><button>그립핸들</button></li>
+                            <li><button>경량알루미늄</button></li>
+                        </ul>
+
+
+                    </div><!-- text_wrap -->
+                    <div class="img_wrap">
+                        <img src="./images/structure.gif" alt="">
+
+                    </div>
+                </div>
+            </div><!-- structure -->
+
+
+            <!-- tech spec -->
+            <div class="tech_spec">
+                <div class="inner_tech_spec">
+                    <h3 class="title">tech spec</h3>
+                    <h2 class="sub_title">정밀함으로 완성된 구조</h2>
+                    <ul class="hologram">
+                        <li><img src="./images/tech1.png" alt="hologram">
+                            <p>이중 알루미늄 단열층으로 구성된 보냉 구조</p>
+                        </li>
+                        <li><img src="./images/tech2.png" alt="hologram">
+                            <p>전체 아치를 통해 잡은 안정적인 핸들 실루엣</p>
+                        </li>
+                        <li><img src="./images/tech3.png" alt="hologram">
+                            <p>180° 힌지 회전축 설계로 구현된 폴딩 구조</p>
+                        </li>
+                    </ul>
+
+                </div>
+            </div><!-- tech spec -->
+
+            <!-- slogan2 -->
+            <div class="slogan2">
+                <div class="inner_slogan">
+                    <h2>“beyond function, into sensation.”</h2>
+                    <p>
+                        carryon은 기술만큼 감각에도 집중합니다. 차가운 디자인 속에서 느껴지는 맛, 향, 그리고 순간의 온도까지.
+                    </p>
+
+                </div>
+            </div><!-- slogan2 -->
+
+
+            <!-- flavor -->
+            <div class="flavor" id="flavor">
+                <div class="inner_flavor">
+                    <h3 class="title">flavor</h3>
+                    <h2 class="sub_title">향으로 구분되는 순간</h2>
+
+                <div class="slider_wrap">
+    <div class="slider-container">
+        <div class="left-arrow"><i class="fa fa-angle-left" style="font-size:24px"></i></div>
+        <div class="slider-content" id='slider-content'>
+
+            <!-- 1. MATTE BLACK -->
+            <div class="slide flavor-black">
+                <div class="media">
+                    <img src="./images/flavor1.png" alt="flavor1">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            MATTE BLACK
+                            <div class="product-content">
+                                불필요한 장식을 모두 덜어낸 강렬한 매트 질감이<br>
+                                순수한 퍼포먼스의 에너지를 직접적으로 전달하며,<br>
+                                가장 기본이자 가장 확실한 선택을 완성합니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(0)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. AMBER ORANGE -->
+            <div class="slide flavor-orange">
+                <div class="media">
+                    <img src="./images/flavor2.png" alt="flavor2">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            AMBER ORANGE
+                            <div class="product-content">
+                                따뜻한 앰버 톤의 시트러스 향이 차분하게 번지며<br>
+                                부드러운 단맛 뒤에 깊고 자연스러운 여운을 남기고,<br>
+                                하루의 리듬을 되살리고 싶은 순간에 가장 잘 맞습니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(1)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. METALLIC SILVER -->
+            <div class="slide flavor-silver">
+                <div class="media">
+                    <img src="./images/flavor3.png" alt="flavor3">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            METALLIC SILVER
+                            <div class="product-content">
+                                차갑게 스며드는 메탈릭 쿨링이 즉각적인 리프레시와<br>
+                                선명하게 정리되는 집중력을 동시에 끌어올려 주며,<br>
+                                더욱 샤프한 전환이 필요한 순간에 힘을 발휘합니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(2)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. ICE BLUE -->
+            <div class="slide flavor-blue">
+                <div class="media">
+                    <img src="./images/flavor4.png" alt="flavor4">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            ICE BLUE
+                            <div class="product-content">
+                                얼음처럼 맑고 깨끗한 청량감이 첫 모금부터 퍼지고<br>
+                                과열된 흐름을 단번에 리셋해 주는 쿨링 포뮬러로,<br>
+                                맑은 정신이 필요한 순간에 안정적으로 작동합니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(3)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. PHANTOM BERRY -->
+            <div class="slide flavor-berry">
+                <div class="media">
+                    <img src="./images/flavor5.png" alt="flavor5">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            PHANTOM BERRY
+                            <div class="product-content">
+                                은은하게 퍼지는 밤색 베리 향이 깊고 신비한 무드를<br>
+                                형성하며 무카페인임에도 진한 밸런스를 유지하고,<br>
+                                늦은 밤에도 부담 없이 에너지를 잇고 싶을 때 적합합니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(4)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 반복 슬라이드들도 같은 맛별 클래스 붙여서 복제 -->
+            <div class="slide flavor-black">
+                <div class="media">
+                    <img src="./images/flavor1.png" alt="flavor1">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            MATTE BLACK
+                            <div class="product-content">
+                                불필요한 장식을 모두 덜어낸 강렬한 매트 질감이<br>
+                                순수한 퍼포먼스의 에너지를 직접적으로 전달하며,<br>
+                                가장 기본 같지만 가장 확실한 선택을 완성합니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(5)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide flavor-orange">
+                <div class="media">
+                    <img src="./images/flavor2.png" alt="flavor2">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            AMBER ORANGE
+                            <div class="product-content">
+                                따뜻한 앰버 톤의 시트러스 향이 차분하게 번지며<br>
+                                부드러운 단맛 뒤에 깊고 자연스러운 여운을 남기고,<br>
+                                하루의 리듬을 되살리고 싶은 순간에 가장 잘 맞습니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(6)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="slide flavor-silver">
+                <div class="media">
+                    <img src="./images/flavor3.png" alt="flavor3">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            METALLIC SILVER
+                            <div class="product-content">
+                                차갑게 스며드는 메탈릭 쿨링이 즉각적인 리프레시와<br>
+                                선명하게 정리되는 집중력을 동시에 끌어올려 주며,<br>
+                                더욱 샤프한 전환이 필요한 순간에 힘을 발휘합니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(7)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="slide flavor-blue">
+                <div class="media">
+                    <img src="./images/flavor4.png" alt="flavor4">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            ICE BLUE
+                            <div class="product-content">
+                                얼음처럼 맑고 깨끗한 청량감이 첫 모금부터 퍼지고<br>
+                                과열된 흐름을 단번에 리셋해 주는 쿨링 포뮬러로,<br>
+                                맑은 정신이 필요한 순간에 안정적으로 작동합니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(8)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="slide flavor-berry">
+                <div class="media">
+                    <img src="./images/flavor5.png" alt="flavor5">
+                    <video src=""></video>
+                </div>
+                <div class="card-sections">
+                    <div class="upper-section">
+                        <div class="wishlist"><i class="fa fa-heart"></i></div>
+                        <div class="price">$4.09</div>
+                        <div class="cart"><i class="fa fa-cart-plus"></i></div>
+                    </div>
+                    <div class="lower-section">
+                        <div class="card-caption">
+                            PHANTOM BERRY
+                            <div class="product-content">
+                                은은하게 퍼지는 밤색 베리 향이 깊고 신비한 무드를<br>
+                                형성하며 무카페인임에도 진한 밸런스를 유지하고,<br>
+                                늦은 밤에도 부담 없이 에너지를 잇고 싶을 때 적합합니다.
+                            </div>
+                        </div>
+                        <div class="card-button" onclick="knowMoreToggle(9)">
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-content-background"></div>
+        </div>
+        <div class="right-arrow"><i class="fa fa-angle-right" style="font-size:24px"></i></div>
+    </div>
+</div>
+
+
+
+                </div><!-- inner_flavor -->
+
+            </div><!-- flavor -->
+
+            <!-- promotion -->
+            <div class="promotion" id="promotion">
+                <div class="inner_promotion">
+                    <h3 class="title">promotion</h3>
+                    <h2 class="sub_title">움직임으로 전하는 경험</h2>
+
+
+                    <ul class="poster">
+                        <li data-aos="fade-right" data-aos-duration="2000">
+
+                            <img src="./images/promotion1.jpg" alt="poster1">
+                            <strong>CARRYON ASCEND WEEK </strong>
+                            <p>2025.11.16 - 2025.11.23</p>
+                        </li>
+                        <li data-aos="fade-left" data-aos-duration="2000">
+                            <img src="./images/promotion2.jpg" alt="poster2">
+                            <strong>CARRYON NIGHT RUN SEOUL </strong>
+                            <p>2025.12.6.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- promotion -->
+
+            <!-- goods -->
+            <div class="goods">
+                <div class="inner_goods">
+                    <h3 class="title">goods</h3>
+                    <h2 class="sub_title">기능이 머무는 또 하나의 형태</h2>
+                    <ul class="product">
+                        <li>
+                            <div class="cover_wrap">
+                                <!-- position 기준 -->
+                                <div class="img_wrap">
+                                    <img src="./images/goods1.jpg" alt="goods">
+                                </div>
+                                <div class="cover">
+                                    <!-- position 검은배경 -->
+                                    <p>
+                                    <p><strong>CARRYON CAP</strong><br><br>
+                                        Grip your focus.<br>
+                                        Stay sharp in every move.<br><br>
+                                        Limited Batch / 2025 Edition</p>
+                                    <a href="#">자세히보기</a>
+                                </div>
+                            </div><!-- cover_wrap -->
+
+                        </li>
+                        <li>
+                            <div class="cover_wrap">
+                                <!-- position 기준 -->
+                                <div class="img_wrap">
+                                    <img src="./images/goods2.png" alt="goods">
+                                </div>
+                                <div class="cover">
+                                    <!-- position 검은배경 -->
+                                    <p>
+                                    <p><strong>CARRYON CARABINER</strong><br><br>
+                                        Carry light, climb stronger.<br>
+                                        Stay refreshed in every ascent.<br><br>
+                                        Limited Batch / 2025 Edition</p>
+                                    <a href="#">자세히보기</a>
+                                </div>
+                            </div><!-- cover_wrap -->
+
+                        </li>
+                        <li>
+                            <div class="cover_wrap">
+                                <!-- position 기준 -->
+                                <div class="img_wrap">
+                                    <img src="./images/goods3.jpg" alt="goods">
+                                </div>
+                                <div class="cover">
+                                    <!-- position 검은배경 -->
+                                    <p> <strong>carryon T-SHIRT </strong> <br> <br>
+                                        Wear the current. <br>
+                                        Move like energy itself. <br> <br>
+
+                                        Limited Batch / 2025 Edition</p>
+                                    <a href="#">자세히보기</a>
+                                </div>
+                            </div><!-- cover_wrap -->
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- goods -->
+
+            <!-- membership -->
+            <div class="membership" id="community">
+                <div class="inner_membership">
+                    <div class="text_wrap">
+                        <h3 class="title">membership</h3>
+                        <h2 class="sub_title">가치를 공유하는 연결</h2>
+                        <p>CARRYON CLUB은 브랜드와 함께 움직이는 멤버십입니다.
+                            <br>신제품의 조기 공개, 한정판 우선 구매, 오프라인 체험 초대,<br>멤버 전용 굿즈와 리워드 혜택이 주어집니다.<br><br>지속되는 연결을 경험하세요.
+                        </p>
+
+
+
+                    </div><!-- text_wrap -->
+                    <div class="img_wrap">
+                        <img src="./images/membership.gif" alt="">
+
+                    </div>
+
+
+
+                </div>
+            </div><!-- membership -->
+
+            <!-- sns -->
+            <div class="sns">
+                <div class="inner_sns">
+                    <h3 class="title">sns</h3>
+                    <h2 class="sub_title">멈추지 않는 흐름의 끝에서</h2>
+                    <ul class="instagram">
+                        <li>
+                            <img src="./images/sns1.jpg" alt="sns">
+
+                        </li>
+                        <li>
+                            <img src="./images/sns2.jpg" alt="sns">
+
+                        </li>
+                        <li>
+                            <img src="./images/sns3.jpg" alt="sns">
+                        </li>
+                        <li>
+                            <img src="./images/sns4.jpg" alt="sns">
+                        </li>
+                        <li>
+                            <img src="./images/sns5.jpg" alt="sns">
+                        </li>
+                        <li>
+                            <img src="./images/sns6.jpg" alt="sns">
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- sns -->
+            <!-- faq -->
+            <div class="faq" id="faq">
+                <div class="inner_faq">
+                    <h3 class="title">faq</h3>
+                    <h2 class="sub_title">자주 묻는 질문</h2>
+
+                    <ul class="faq_list">
+                        <li class="faq-item">
+                            <div class="faq-q"><!-- 질문 -->
+                                Q. CARRYON은 어떤 음료인가요?
+                            </div>
+                            <div class="faq-a"><!-- 답변 래퍼 -->
+                                <div class="faq-panel"><!-- 내려오는 판 -->
+                                    <span>“손에 쥐는 시원함, 집중을 깨우는 한 모금.”</span><br>
+                                    CARRYON은 이동 중에도 흐트러지지 않는 컨디션을 위해 설계된 프리미엄 에너지 드링크입니다.<br>
+                                    강한 쿨링감과 깨끗한 맛을 중심에 두었고, 필요할 때 바로 ‘각성’과 ‘집중’을 끌어올려 주는 포뮬러가 특징입니다.<br>
+                                    캔 자체도 <span>휴대성</span>과 <span>완성도</span>를 고려해 만들어져,
+                                    단순 음료가 아니라 <span>손에 들리는 하나의 오브제</span>처럼 느껴지도록 디자인되었습니다.
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="faq-item">
+                            <div class="faq-q">
+                                Q. 보냉은 얼마나 유지되나요?
+                            </div>
+                            <div class="faq-a">
+                                <div class="faq-panel">
+                                    <span>“이동이 길어도, 첫 모금의 시원함 그대로.”</span><br>
+                                    여름철 지하철과 도심 열기 속에서도 CARRYON은 <span> 최대 6시간 안정적인 보냉력</span>을 유지합니다. <br>
+                                    알루미늄 이중 단열 구조는 외부 온도 변화에 특히 강해, 책상 위에 오래 두어도 잘 식지 않고, 가방 속에서도 냉기를 놓치지 않습니다.<br>
+                                    한 번 냉장고에서 꺼내면, 이후의 일정 대부분을 커버할 수 있는 수준입니다.
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="faq-item">
+                            <div class="faq-q">
+                                Q. CARRYON 캔은 재사용 가능한가요?
+                            </div>
+                            <div class="faq-a">
+                                <div class="faq-panel">
+                                    <span>“시원함은 타이밍입니다.”</span> <br>
+                                    CARRYON은 보냉력에 집중한 단회용 알루미늄 구조로 제작되어,<br>
+                                    세척 후 재사용할 경우 초기 설계에서 의도한 냉기 유지력과 위생 안정성이 크게 떨어질 수 있습니다.<br>
+                                    가볍고 효율적인 사용을 위해 <span>한 번의 가장 완벽한 경험</span>을 제공하는 것을 목표로 합니다.
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="faq-item">
+                            <div class="faq-q">
+                                Q. 온라인에서도 구매 가능한가요?
+                            </div>
+                            <div class="faq-a">
+                                <div class="faq-panel">
+                                    <span>“필요할 때, 바로.”</span><br>
+                                    온라인 기반 유통을 중심으로 운영하기 때문에,<br>
+                                    언제든 원하는 타이밍에 주문하고 빠르게 받아볼 수 있습니다.<br>
+                                    신제품 또는 리미티드 라인은 온라인이 가장 먼저 업데이트되는 경우가 많습니다.
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="faq-item">
+                            <div class="faq-q">
+                                Q. 해외 배송이 가능한가요?
+                            </div>
+                            <div class="faq-a">
+                                <div class="faq-panel">
+                                    <br>
+                                    <span>“도달 범위를 넓히고 있습니다.”</span><br>
+                                    현재는 국내만 지원되지만, 브랜드 스케일 확장과 함께 해외 파트너십을 점진적으로 구축 중입니다.<br>
+                                    해외 배송은 제품 안정성과 보냉 컨디션을 유지할 수 있는 시스템이 확보되는 대로 오픈될 계획입니다. <br>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="faq-item">
+                            <div class="faq-q">
+                                Q. 문의는 어디로 하면 되나요?
+                            </div>
+                            <div class="faq-a">
+                                <div class="faq-panel">
+                                    <span>“짧게 물어보셔도 좋습니다.”</span><br>
+                                    제품에 대한 궁금증, 구매 문의, 협업 제안까지
+                                    모든 문의는 <span>info@carryon.com</span><br>
+                                    또는 공식 <span>인스타그램 DM</span>을 통해 언제든 편하게 남기실 수 있습니다.<br>
+                                    가능한 빠르게 답변드리고 있으며, 고객 의견은 제품 개발과 업데이트에도 적극 반영됩니다.
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- inner_faq -->
+            </div><!-- faq -->
+
+
+            <!-- footer -->
+            <div class="footer">
+                <div class="inner_footer">
+                    <ul class="footer_list">
+                        <li>
+                            <p>© 2025 CARRYON. All Rights Reserved.</p>
+                        </li>
+                        <li>
+                            <img src="./images/logo_footer.png" class="logo_footer" alt="logo_footer">
+                        </li>
+                        <li>
+                            <ul class="social">
+                                <li><a href="https://www.instagram.com/" target="_blank"><img
+                                            src="./images/footer_instagram.png" alt=""></a></li>
+                                <li><a href="https://www.youtube.com/" target="_blank"><img
+                                            src="./images/footer_youtube.png" alt=""></a></li>
+                                <li><a href="https://www.facebook.com/" target="_blank"><img
+                                            src="./images/footer_facebook.png" alt=""></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <button id="topBtn">TOP</button>
+        <div class="scroll-indicator">
+            <div class="scroll-bar"></div>
+        </div>
+
+    </div><!-- wrap -->
+
+
+
+    <!-- jQuery 연결 -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/script.js"></script>
+    <!-- aos 실행 -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- easing 플러그인 추가 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+
+
+
+</body>
+
+</html>

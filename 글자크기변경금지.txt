@@ -1,0 +1,16 @@
+html, body {
+    text-size-adjust: none;
+    /* text-size-adjust : 브라우저가 자동으로 텍스트 크기를 확대 및 축소하는 것을 제어한다. */
+    /* 가로 모드로 바꾸면 글자가 커지거나 줄어드는 경우가 있는데, 이 속성을 none으로 하면 디자인한 글자 크기가 유지된다. */
+    /* 모바일 브라우저에서 글자 크기를 자동으로 바꾸지 못하게 막는 설정 */
+    /* 디자인 의도대로 폰트 크기를 고정하려는 용도 */
+    /* prevent font scaling in landscape */
+    -webkit-text-size-adjust: none;
+    /* chrome, safari, 최신 opera */
+    -moz-text-size-adjust: none;
+    /* firefox */
+    -ms-text-size-adjust: none;
+    /* internet explorer */
+    -o-text-size-adjust: none;
+    /* 예전 opera */
+}

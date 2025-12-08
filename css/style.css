@@ -128,6 +128,16 @@ body {
 .gnb_right {
     display: flex;
     gap: 50px;
+    width: 500px;
+    
+}
+
+.gnb_left{
+  justify-content: flex-start;
+}
+
+.gnb_right{
+  justify-content: flex-end;
 }
 
 /* 기본 메뉴 스타일 (큰 상태) */

@@ -4,34 +4,1554 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1360">
-    <!-- 브라우저 뷰포트 너비를 1360px로 고정하여 페이지를 그리도록 설정 -->
     <title>CARRYON</title>
-    <!-- favicon -->
     <link rel="shortcut icon" href="./images/favicon3.png" type="image/x-icon">
-    <!-- webfont 연결-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-    <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- 아이콘 링크 연결 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- aos 연결 -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- css 연결-->
-    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        @charset "utf-8";
+
+        html,
+        body,
+        div,
+        span,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        em,
+        img,
+        small,
+        strong,
+        b,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        footer,
+        header,
+        nav,
+        section,
+        summary,
+        video,
+        * {
+            padding: 0;
+            margin: 0;
+        }
 
 
 
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        html {
+            /* Prevent font scaling in landscape */
+
+            -webkit-text-size-adjust: none;
+            /*Chrome, Safari, newer versions of Opera*/
+
+            -moz-text-size-adjust: none;
+            /*Firefox*/
+
+            -ms-text-size-adjust: none;
+            /*Ie*/
+
+            -o-text-size-adjust: none;
+            /*old versions of Opera*/
+        }
+
+        body {
+            font-family: "Bebas Neue", "Pretendard", sans-serif;
+            font-size: 15px;
+            line-height: 1.5em;
+            color: #333;
+            background-color: #0A0F1A;
+
+        }
+
+        #wrap {
+            width: 100%;
+            min-width: 1360px;
+            margin: 0 auto;
+            background-color: #0A0F1A;
+            overflow: hidden;
+        }
+
+
+
+        /* =========================
+            헤더 전체 정리본 (교체용)
+            ========================= */
+
+        /* 기본 헤더 */
+        .header {
+            width: 100%;
+            height: 95px;
+            display: flex;
+            background-color: rgba(17, 26, 45, 1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition:
+                height 0.45s cubic-bezier(.25, .1, .25, 1),
+                background-color 0.45s cubic-bezier(.25, .1, .25, 1),
+                backdrop-filter 0.45s cubic-bezier(.25, .1, .25, 1);
+        }
+
+        /* 헤더 안 컨텐츠 정렬 */
+        .inner_header {
+            width: 1320px;
+            display: flex;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+
+        /* 메뉴 공통 */
+        .gnb_left,
+        .gnb_right {
+            display: flex;
+            gap: 50px;
+            width: 500px;
+            
+        }
+
+        .gnb_left{
+          justify-content: flex-start;
+        }
+
+        .gnb_right{
+          justify-content: flex-end;
+        }
+
+        /* 기본 메뉴 스타일 (큰 상태) */
+        .gnb_left a,
+        .gnb_right a {
+            display: block;
+            padding: 0 28px;
+            margin-top: 32px;
+            font-size: 22px;
+            color: #fff;
+            transition: all 0.45s cubic-bezier(.25, .1, .25, 1);
+        }
+
+        .gnb_left a:hover,
+        .gnb_right a:hover{
+          color: #6997F8;
+          
+          
+        }
+
+        /* 기본 로고 */
+        .main_logo img {
+            width: 125px;
+            transition: all 0.45s cubic-bezier(.25, .1, .25, 1);
+        }
+
+        /* 🔥 헤더 축소 상태 */
+        .header.header--small {
+            height: 50px;
+            background-color: rgba(17, 26, 45, 0.35);
+            backdrop-filter: blur(3px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* 축소 상태에서 메뉴/여백/폰트 부드럽게 줄이기 */
+        .header.header--small .gnb_left a,
+        .header.header--small .gnb_right a {
+            margin-top: 20px;
+            /* 32 → 20 : 자연스럽게 올라감 */
+            font-size: 19px;
+            /* 22 → 19 : 차이 살짝만 */
+            padding: 0 22px;
+            /* 좌우 여백도 살짝 줄이기 */
+            opacity: 0.9;
+        }
+
+        /* 축소 상태에서 로고도 부드럽게 축소 */
+        .header.header--small .main_logo img {
+            width: 70px;
+            /* 125 → 110 : “툭” 말고 “슥” 느낌 */
+        }
+
+        /* 축소된 상태에서 마우스 올리면 다시 또렷하게 */
+        .header.header--small:hover {
+            background-color: rgba(17, 26, 45, 0.95);
+        }
+
+        .header.header--small:hover .gnb_left a,
+        .header.header--small:hover .gnb_right a {
+            opacity: 1;
+        }
+
+
+
+        .inner_header {
+            width: 1320px;
+            display: flex;
+            margin: 0 auto;
+            justify-content: space-between;
+
+
+        }
+
+        .gnb_left,
+        .gnb_right {
+            display: flex;
+            gap: 50px;
+
+        }
+
+        .gnb_left a,
+        .gnb_right a {
+            display: block;
+            /* background-color: antiquewhite; */
+            padding: 0 30px;
+            margin-top: 35px;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .main_logo img {
+            width: 133px;
+        }
+
+
+        .main_banner {
+            width: 100%;
+            height: calc(100svh - 95px);
+            position: fixed;
+            /* 화면에 고정 */
+            top: 95px;
+            /* 헤더 바로 아래에 붙게 */
+            left: 0;
+            /* height: calc(100vh - 95px); */
+            /* 헤더 제외한 나머지 화면 전체 높이 */
+            overflow: hidden;
+            z-index: 1;
+            /* 아래 콘텐츠보다 뒤에 오게 (page_content가 2) */
+        }
+
+        .inner_main_banner {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .inner_main_banner video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 비디오 꽉 채우기 */
+            display: block;
+            background-color: #000;
+        }
+
+        /* 🔇 비디오 컨트롤 버튼 (위치 중앙으로 변경) */
+        .vdo_ctrl {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            /* 좌우 중앙 정렬 */
+            transform: translateX(-50%);
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .vdo_ctrl:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%) scale(1.1);
+            /* 중앙 정렬 유지하며 확대 */
+        }
+
+        .vdo_ctrl i {
+            font-size: 20px;
+        }
+
+        .page_content {
+            position: relative;
+            z-index: 2;
+            /* main_banner(1) 위에 오게 */
+            /* margin-top: 100vh; */
+            margin-top: 100svh;
+            /* 처음에 화면 아래에 있다가, 스크롤하면 올라옴 */
+            background-color: #0A0F1A;
+            /* 배경 색: 비디오 위를 완전히 덮도록 */
+        }
+
+
+        .slogan1 {
+            width: 100%;
+            height: 310px;
+            box-sizing: border-box;
+
+
+        }
+
+        .inner_slogan {
+            padding: 50px 0;
+            background:
+                linear-gradient(180deg, rgba(17, 26, 45, 1), rgba(17, 26, 45, 0.9), rgba(17, 26, 45, 0.5)),
+                url(./images/slogan_bg1.jpg);
+            background-size: cover;
+            text-align: center;
+            box-sizing: border-box;
+            line-height: 3.3em;
+        }
+
+        .inner_slogan h2 {
+            font-size: 55px;
+            color: #fff;
+            font-weight: 500;
+
+
+        }
+
+        .inner_slogan p {
+            font-size: 20px;
+            color: #6997F8;
+
+        }
+
+        .inner_structure {
+            width: 1320px;
+            margin: 100px auto;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+
+        .text_wrap {
+            padding: 150px 0;
+            width: 600px;
+
+        }
+
+        .title {
+            color: #486CCD;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sub_title {
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .structure .img_wrap {
+            width: 600px;
+
+        }
+
+        .structure .img_wrap img {
+            width: 100%;
+        }
+
+        .text_wrap p {
+            font-family: "Pretendard";
+            color: #fff;
+            font-size: 15px;
+            font-weight: 100;
+            margin-bottom: 20px;
+
+
+        }
+
+        .text_wrap strong {
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .feature {
+            display: flex;
+            margin-top: 20px;
+            gap: 10px;
+
+        }
+
+        .feature button {
+            display: block;
+            padding: 5px 10px;
+            background-color: #111A2D;
+            border: 2px solid #7a8bb9;
+            border-radius: 20px;
+            font-size: 15px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.5s;
+        }
+
+        .feature button:hover {
+
+            box-shadow: 0 0 10px rgba(82, 218, 255, 0.7);
+
+        }
+
+
+        .inner_tech_spec {
+            width: 1320px;
+            margin: 0 auto;
+            height: 600px;
+        }
+
+        .hologram {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hologram li {
+            width: 370px;
+            height: 370px;
+            overflow: hidden;
+            box-sizing: border-box;
+            border-radius: 20px;
+            transition: all 0.5s;
+            cursor: pointer;
+            position: relative;
+            z-index: 9;
+
+
+        }
+
+        .hologram li p{
+          position: absolute;
+          bottom: 160px;
+          left: 19%;
+          text-align: center;
+          opacity: 0;
+          transition: all 0.45s;
+          font-size: 20px;
+          transform: translateY(180px);
+          
+          
+        }
+
+        .hologram li:hover p{
+          opacity: 1;
+          transform: translateY(150px);
+        }
+
+        .hologram li img {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: block;
+            border-radius: 20px;
+            transform: scale(1);
+            transition: all 0.5s ease;
+            opacity: 0.5;
+            background-color: #111;
+        }
+
+        .hologram li p {
+            color: #fff;
+            text-align: center;
+            font-size: 15px;
+            padding-top: 30px;
+        }
+
+        .hologram li:hover{
+          box-shadow: 0 0 10px rgba(78, 255, 86, 0.5);
+        }
+
+        .hologram li:hover img {
+            opacity: 1;
+            transform: scale(1.1);
+            
+
+        }
+
+
+        .slogan2 {
+            width: 100%;
+            height: 310px;
+        }
+
+        .slogan2 .inner_slogan {
+            background: linear-gradient(180deg, rgba(17, 26, 45, 1), rgba(20, 27, 43, 0.5), rgba(17, 26, 45, 1)),
+                url(./images/slogan_bg2.jpg);
+            background-size: cover;
+
+
+        }
+
+        .inner_flavor {
+            width: 1320px;
+            height: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+
+
+        /*-------------------------------------------- flavor slider-------------------- */
+        .slider_wrap {
+          margin: 0 auto;
+          
+          width: 100%;
+          height: 650px;
+          /* background: #f1f1f1; */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .slider-container {
+          height: 100%;
+          width: 100%;
+          max-width: 1920px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          user-select: none;
+          position: relative;
+          margin-top: 0;
+          
+        }
+
+        .slider-title{
+          position: absolute;
+          top: 0;
+          font-family: "Bebas Neue", "Pretendard", sans-serif;
+          font-size: 13px;
+        }
+
+        .left-arrow,
+        .right-arrow {
+          height: 90px;
+          width: 6%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          animation: arrow-slide-in 2s 1s forwards ease-out
+        }
+
+        .left-arrow{
+          transform: translate(-100vw);
+        }
+        .right-arrow{
+          transform: translate(100vw);
+        }
+
+        @keyframes arrow-slide-in{
+          to{
+            transform: translate(0px);
+          }
+        }
+
+        .slider-content {
+          height: 100%;
+          width: 80%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          overflow: hidden;
+          position: relative;
+          perspective: 100px;
+        }
+        .slider-content-background {
+          height: 100%;
+          width: 102%;
+          position: absolute;
+          top: 0;
+          left: -1%;
+          /* background: linear-gradient(
+            to left,
+            #f1f1f1,
+            transparent,
+            transparent,
+            transparent,
+            #f1f1f1
+          ); */
+          z-index: 3;
+        }
+        .slider-content .slide {
+          position: absolute;
+          left: 50%;
+          height: 40rem;      /* 34rem → 40rem (대략 15~20% 정도 키움) */
+          max-height: 520px;  /* 400px → 520px 정도로 여유 */
+          width: 16rem;       /* 14rem → 16rem (너비도 살짝 키우기) */
+          min-width: 320px;   /* 270px → 320px (너비 최소값 확대) */
+          /* background: #999; */
+        /* border: 1px solid; */ 
+          border-radius: 25px;
+          left: 50%;
+          z-index: 0;
+          opacity: 0;
+          transform: translate(-50%, 0) rotateY(0deg) scale(1,1);
+          transform-style: preserve-3d;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, left 0.5s ease-in-out,
+            z-index 0s 0.25s ease-in-out, box-shadow 0.5s ease-in-out, filter 0.5s ease-in-out;
+        }
+
+        .slide.position-1 {
+          left: 8% !important;
+          z-index: 1 !important;
+          transform: translate(-50%, 0) rotateY(0deg) scale(0.6, 0.6) !important;
+          opacity: 1 !important;
+          /* box-shadow: 0px 0.4rem 1.6rem rgba(0, 0, 0, 0.1) !important; */
+          filter: blur(5px);
+          
+        }
+        .slide.position-2 {
+          left: 25% !important;
+          z-index: 2 !important;
+          transform: translate(-50%, 0) rotateY(0deg) scale(0.8, 0.8) !important;
+          opacity: 1 !important;
+          /* box-shadow: 0px 0.4rem 1.6rem rgba(0, 0, 0, 0.3) !important; */
+          filter: blur(2px);
+          
+          
+        }
+        .slide.position-3 {
+          left: 50% !important;
+          z-index: 4 !important;
+          transform: translate(-50%, 0) rotateY(0deg) scale(1, 1) !important;
+          opacity: 1 !important;
+          /* box-shadow: 0px 0.4rem 1.6rem rgba(0, 0, 0, 0.5) !important; */
+          cursor: pointer;
+          filter: blur(0px);
+        }
+        .slide.position-3:hover {
+          /* box-shadow: 0px 0rem 1.8rem rgba(128, 187, 255, 0.7) !important; */
+          transform: translate(-50%, 0) rotateY(0deg) scale(1.05, 1.05) !important;
+        }
+        .slide.position-4 {
+          left: 75% !important;
+          z-index: 2 !important;
+          transform: translate(-50%, 0) rotateY(0deg) scale(0.8, 0.8) !important;
+          opacity: 1 !important;
+          /* box-shadow: 0px 0.4rem 1.6rem rgba(0, 0, 0, 0.3) !important; */
+          filter: blur(2px);
+        }
+        .slide.position-5 {
+          left: 92% !important;
+          z-index: 1 !important;
+          transform: translate(-50%, 0) rotateY(0deg) scale(0.6, 0.6) !important;
+          opacity: 1 !important;
+          /* box-shadow: 0px 0.4rem 1.6rem rgba(0, 0, 0, 0.1) !important; */
+          filter: blur(5px);
+        }
+
+        .slide.position-none{
+           left: 50%;
+          z-index: 0;
+          transform: translate(-50%, 0) rotateY(0deg) scale(0.7, 0.7);
+          opacity: 0;
+          box-shadow: 0px 0.4rem 1.6rem rgba(0, 0, 0, 0);
+        }
+
+        .slider-container i{
+          width: 2rem;
+          height: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          border-radius: 50%;
+        }
+        .slider-container .left-arrow:hover i, .slider-container .right-arrow:hover i{
+          /* background: rgb(255, 255, 255); */
+          color: #62cdff;
+        }
+
+
+        .slider-content .slide .card-sections .upper-section, .slider-content .slide .card-button{
+          opacity: 0;
+          transition: opacity 0.6s ease-in-out;
+        }
+
+        .slider-content .slide.position-3 .card-sections .upper-section, .slider-content .slide.position-3:hover .card-button{
+          opacity: 1;
+          transition: opacity 0.6s ease-in-out;
+        }
+
+        .slide > *{
+          color: rgb(255, 255, 255);
+          font-family: "Bebas Neue", "Pretendard", sans-serif;
+          font-size: 90%;
+          letter-spacing: -0.001em;
+        }
+
+        .media, .card-sections{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 25px;
+          overflow: hidden;
+        }
+        .media{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .media img{
+          position: absolute;
+          height: 50rem;
+        }
+
+        .card-sections{
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          box-sizing: border-box;
+        }
+
+        .upper-section{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        .lower-section{
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .card-sections .lower-section .card-button{
+          margin: 0 auto;
+          z-index: 1;
+        }
+
+        .slide.position-3:hover .card-sections .lower-section .card-button{
+          animation: ;
+        }
+
+        .slide.active.position-3 .card-sections .lower-section .card-button{
+          transform: rotatex(180deg); 
+        }
+
+        .upper-section .wishlist, .upper-section .cart{
+          background: rgba(0,0,0,0.3);
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          display: none;
+          place-content: center;
+          backdrop-filter: blur(10px);
+          transition: color 0.2s ease-in-out, background 0.2s ease-in-out ;
+        }
+        .upper-section .cart:hover{
+          color: rgb(252, 163, 60);
+          background: rgba(0,0,0,0.4);
+        } 
+        .upper-section .wishlist:hover{
+          color: rgb(244, 129, 129);
+          background: rgba(0,0,0,0.4);
+        }
+
+        .card-caption{
+          width: 90%;
+          position: absolute;
+          text-align: center;
+          bottom: 0%;
+          /* left: 50%; */
+          /* transform: translate(-50%); */
+          z-index: 1;
+          font-family:  "Pretendard", sans-serif;
+          transition: bottom 0.2s 0.3s ease-in-out, left 0.2s 0.3s ease-in-out, transform  0.2s 0.3s ease-in-out;
+        }
+
+        .product-content{
+          font-family: "pretendard";
+          text-align: center;
+          position: absolute;
+          opacity: 0;
+          width: 100%;
+          line-height: 1.5em;
+          margin-top: 40px;
+          font-size: 13px;
+          font-weight: 200;
+          transition: opacity 0.2s 0s ease-in-out;
+          overflow: hidden;
+           display: -webkit-box;
+           -webkit-line-clamp: unset;
+          line-clamp: unset; 
+           -webkit-box-orient: vertical;
+        }
+
+        .slide.active.position-3 .product-content{
+          opacity: 1;
+          transition: opacity 0.5s 0.3s ease-in-out;
+          
+        }
+
+        .slide.position-3:hover .card-caption, .slide.active.position-3 .card-caption{
+          bottom: 15%;
+          transition: bottom 0.4s 0s ease-in-out;
+        }
+
+         .slide.active.position-3 .card-caption{
+          /* left: 5%;
+          transform: translate(0%); */
+          bottom: 40%;
+          transition: bottom 0.4s 0s ease-in-out, left 0.4s 0s ease-in-out, transform  0.4s 0s ease-in-out;;
+        /* margin-top: -10rem; */
+        }
+
+        .upper-section .price{
+          color: rgba(0, 0, 0, 0);
+          display: none;
+          position: relative;
+          background: rgba(0,0,0,0.0);
+          width: 55%;
+          height: 35px;
+          margin-top: -10rem;
+          display: grid;
+          place-content: center;
+          border-radius: 0 0 25px 25px;
+          backdrop-filter: blur(0px);
+          transition: margin-top 0.2s 0s ease-in-out;
+          
+        }
+        .slide.position-3:hover .upper-section .price, .slide.active.position-3 .upper-section .price{
+          margin-top: -1rem;
+          transition: margin-top 0.4s 0.2s ease-in-out;
+        }
+
+        .lower-section::before {
+            content: '';
+            background: rgba(0,0,0,0);
+            position: absolute;
+            bottom: -5%;
+            height: 15%;
+            width: 100%;
+            left: 0;
+            border-radius: 8rem 8rem 0 0;
+            filter: blur(11px);
+            transition: background 0.35s 0.35s ease-in-out, height 0.35s ease-in-out, border-radius 0.35s ease-in-out;
+        }
+
+        .slide.active.position-3 .lower-section::before {
+            content: '';
+            background: rgba(0,0,0,0.0);
+        /* background: linear-gradient(45deg,rgba(0,0,0,0.2), rgba(255,255,255,0.2)); */
+            position: absolute;
+            bottom: -5%;
+            height: 55%;
+            width: 100%;
+            left: 0;
+            border-radius: 1rem 1rem 0 0;
+            filter: blur(0px);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.3);
+            box-sizing: border-box;
+            transition: background 0.35s ease-in-out, height 0.35s ease-in-out, border-radius 0.01s ease-in-out;
+        }
+
+
+        .slide:not(.active).position-3:hover .lower-section::before {
+          height: 33%;
+          background: rgba(0,0,0,0.3);
+          border-radius: 28rem 28rem 0 0;
+        }
+
+        @media screen and (max-width:620px){
+        .slide.position-1, .slide.position-5 {
+          opacity: 0.5 !important;
+          }
+          .slide.position-2, .slide.position-4 {
+          opacity: 0.95 !important;
+        }
+        } 
+          
+        @media screen and (max-width: 445px){
+          
+          .slide.position-1, .slide.position-5 {
+          opacity: 0 !important;
+          }
+        .slide.position-2, .slide.position-4 {
+          opacity: 0.5 !important;
+        }
+        }
+        @media screen and (max-width: 415px){
+          .slide.position-3:hover {
+            /* box-shadow: 0px 0rem 0.8rem rgba(0, 0, 0, 0.7) !important; */
+            transform: translate(-50%, 0) rotateY(0deg) scale(1.05, 1.05) !important;
+          }
+          .slide{
+            opacity: 0 !important;
+            box-shadow: none !important;
+          }
+          .slide.position-3{
+            box-shadow: none !important;
+            opacity: 1 !important;
+          }
+          .slide.position-1, .slide.position-2 {
+            left: -50% !important;
+            transform: translate(-50%, 0) rotateY(0deg) scale(0.7, 0.7) !important;
+          }
+          .slide.position-4, .slide.position-5 {
+            left: 150% !important;
+            transform: translate(-50%, 0) rotateY(0deg) scale(0.7, 0.7) !important;
+          }
+        }
+        @media screen and (max-width: 390px){
+
+        .left-arrow,
+        .right-arrow {
+          display: none;
+        }
+          .slider-content{
+            width: 100%;
+          }
+        }
+
+        /* --------------------------------------------slider end-------------------------- */
+
+
+
+
+
+
+        .promotion {
+            height: 900px;
+        }
+
+        .inner_promotion {
+            width: 1320px;
+            margin: 100px auto;
+            padding-top: 100px;
+            padding-bottom: 100px;
+
+        }
+
+
+        .poster {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 100px;
+        }
+
+        .poster li {
+            width: 475px;
+            height: 900px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .poster li img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            background-color: #222;
+        }
+
+        .poster strong {
+            font-size: 20px;
+            font-family: "pretendard";
+            font-weight: 300;
+        }
+
+        .poster p {
+            font-size: 15px;
+            margin-top: 20px;
+            font-family: "pretendard";
+            font-weight: 100;
+        }
+
+        .goods {
+            height: 600px;
+
+        }
+
+
+        .inner_goods {
+            width: 1320px;
+            margin: 100px auto;
+            padding-top: 100px;
+        }
+
+
+        .goods .img_wrap{
+          width: 380px;
+            overflow: hidden;
+            border-radius: 30px;
+
+        }
+
+        .goods .img_wrap img{
+            width: 100%;
+            display: block;
+            /* a keyframe */
+            transform: scale(1);
+            transition: all 0.5s;
+            border-radius: 30px;
+            background-color: #222;
+        }
+
+
+
+
+
+        .cover_wrap:hover .img_wrap img{
+            /* b keyframe */
+            transform: scale(1.1);
+            /* 마우스 호버시 1.2배 커진다 */
+            
+
+        }
+
+        .cover_wrap{
+            position: relative;
+            margin-bottom: 20px;
+            
+        }
+
+        .cover{
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(1px);
+            
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999 ;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* a keyframe */
+            opacity: 0;
+            transition: all 0.5s;
+
+        }
+
+        .cover_wrap:hover .cover{
+            /* b keyframe */
+            opacity: 1;
+            /* 검은배경과 글 나타나기 */
+        }
+
+        .cover strong{
+            font-size: 25px;
+            padding-bottom: 10px;
+            font-weight: 500;
+        }
+
+
+        .cover p{
+            /* a keyframe */
+            text-align: center;
+            transform: translateY(-50px);
+            transition: all 0.5s;
+            font-weight: 100;
+            font-size: 20px;
+        }
+
+
+        .cover_wrap:hover .cover p{
+            /* b keyframe */
+            transform: translateY(0);
+        }
+
+        .cover a{
+            display: inline-block;
+            border: 1px solid #fff;
+            padding: 6px 5px;
+            width: 100px;
+            margin: 40px auto 0;
+            border-radius: 30px;
+            /* a keyframe */
+            transform: translateY(70px);
+            transition: all 0.5s;
+            text-align: center;
+        }
+
+        .cover_wrap:hover .cover a{
+            /* b keyframe */
+            transform: translateY(0px);
+        }
+
+        .cover a:hover{
+            background-color: #fff;
+            color: #111;
+        }
+
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .product li {
+            width: 380px;
+            height: 380px;
+            border-radius: 30px;
+            cursor: pointer;
+
+
+        }
+
+        .product li img {
+            width: 370px;
+            height: 370px;
+            overflow: hidden;
+            object-fit: cover;
+            border-radius: 30px;
+            
+
+        }
+
+
+
+        .membership {
+            height: 800px;
+        }
+
+        .inner_membership {
+          padding-top: 100px;
+            width: 1320px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        .membership p {
+            font-size: 18px;
+            line-height: 1.5em;
+
+        }
+
+        .membership .img_wrap {
+            width: 700px;
+        }
+
+        .membership .img_wrap img{
+          width: 100%;
+        }
+
+
+
+
+        .inner_sns {
+            width: 1320px;
+            margin: 0 auto;
+            height: 900px;
+            padding-bottom: 100px;
+
+        }
+
+        .instagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .instagram li {
+          overflow: hidden;
+            width: 400px;
+            height: 400px;
+            margin-bottom: 50px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.5s;
+            background-color: #222;
+        }
+
+        .instagram li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            transform: scale(1);
+            transition: all 1s;
+
+        }
+
+        .instagram li:hover{
+          box-shadow: 0 0 20px rgba(64, 185, 255, 0.8);
+        }
+
+        .instagram li:hover img{
+          transform: scale(1.1);
+          
+        }
+
+
+
+        .faq {
+            width: 100%;
+        }
+
+        .inner_faq {
+            width: 1320px;
+            margin: 0 auto;
+            color: #fff;
+            font-family: "pretendard", sans-serif;
+        }
+
+        .title {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.18em;
+            margin: 40px 0 8px;
+            color: 486CCD;
+        }
+
+        .sub_title {
+            font-size: 32px;
+            margin-bottom: 32px;
+        }
+
+        .faq_list {
+            width: 1320px;
+            padding-bottom: 100px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .faq_list span {
+            font-weight: 600;
+        }
+
+        .faq_list li {
+            margin-bottom: 10px;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+            background: #0b1220;
+        }
+
+        /* 질문 영역 */
+        .faq-q {
+            background-color: #22355C;
+            padding: 30px 60px 30px 30px;
+            border-radius: 10px 10px 0 0;
+            font-size: 24px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        /* + / - 아이콘 */
+        /* 기본 + 상태 (가로 + 세로 교차) */
+        .faq-q::before,
+        .faq-q::after {
+            content: "";
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            width: 24px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: transform 0.45s cubic-bezier(.21, 1.02, .73, 1), opacity 0.9s ease;
+        }
+
+        /* 가로선 */
+        .faq-q::before {
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        /* 세로선 */
+        .faq-q::after {
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        /* ▼ 열릴 때 (샤라락 뿅 효과 핵심) */
+        .faq-item.open .faq-q::after {
+            transform: translateY(-50%) rotate(180deg);
+            /* 빙그르르 3/4바퀴 회전 */
+            opacity: 1;
+            /* 사라지면서 마이너스 완성 */
+        }
+
+        .faq-item.open .faq-q::before {
+            transform: translateY(-50%) rotate(0deg) scaleX(1.05);
+            /* 약간 "뿅" 느낌 */
+            background-color: #fff;
+        }
+
+
+        /* ▼ 답변 래퍼 */
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        /* ▼ 실제 내려오는 큰 판 */
+        .faq-panel {
+            background-color: #ffffff;
+            color: #333333;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+            font-weight: 300;
+            transform: translateY(-100%);
+            transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        /* 열릴 때 판 내려오기 */
+        .faq-item.open .faq-panel {
+            transform: translateY(0);
+        }
+
+
+
+
+
+
+        .footer {
+            height: 200px;
+            background-color: #111A2D;
+        }
+
+        .inner_footer {
+            width: 1320px;
+            margin: 0 auto;
+
+
+            color: #fff;
+            font-size: 14px;
+            /* background-color: #6997F8; */
+
+        }
+
+
+
+        .footer_list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social {
+            display: flex;
+            gap: 20px;
+
+        }
+
+        .social img {
+            width: 30px;
+        }
+
+        .logo_footer {
+            width: 160px;
+            cursor: pointer;
+        }
+
+        #topBtn {
+          position: fixed;
+          right: 32px;
+          bottom: 32px;
+          padding: 12px 18px;
+          background: #ffffff10;
+          border: 1px solid #ffffff30;
+          color: #fff;
+          font-size: 12px;
+          backdrop-filter: blur(6px);
+          cursor: pointer;
+          border-radius: 8px;
+          transition: 0.2s;
+          z-index: 99;
+        }
+
+        #topBtn.glow {
+            background: #6997F8;
+            color: #0A0F1A;
+            font-weight: 600;
+            box-shadow: 0 0 18px rgba(110,170,255,0.8);
+        }
+
+        #topBtn:hover {
+          background: #ffffff20;
+        }
+
+
+
+
+        /* =========================
+            Scroll Indicator
+            ========================= */
+        .scroll-indicator {
+            position: fixed;
+            right: 60px;            /* 오른쪽 여백 */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;             /* 바 두께 */
+            height: 84%;          /* 전체 길이 */
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            z-index: 9999;
+            /* overflow: hidden; */
+            /* box-shadow: 0 0 22px 6px rgba(90,150,255,0.55); */
+        }
+
+        .scroll-bar {
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(180deg, #86BBFF, #4A7DF4);
+            box-shadow: 0 0 12px rgba(90,150,255,1);
+            border-radius: 20px;
+            transition: all 0.15s ease-out;
+        }
+
+
+        /* 작아진 로고 크기 조정 */
+        .header.header--small .main_logo img {
+            width: 50px;     
+            height: auto;
+            transition: width 0.6s ease;
+        }
+
+
+        /* 맛별 글로우 색상 바꾸기 */
+        /* MATTE BLACK – 딥 그레이 네온 */
+        .slide.flavor-black.position-3:hover {
+          box-shadow: 0 0 30px rgba(140, 140, 140, 0.5);
+        }
+
+        /* AMBER ORANGE – 주황 네온 */
+        .slide.flavor-orange.position-3:hover {
+          box-shadow: 0 0 30px rgba(255, 163, 70, 0.65);
+        }
+
+        /* METALLIC SILVER – 차가운 실버 */
+        .slide.flavor-silver.position-3:hover {
+          box-shadow: 0 0 30px rgba(210, 220, 240, 0.55);
+        }
+
+        /* ICE BLUE – 캐리온 블루 네온 */
+        .slide.flavor-blue.position-3:hover {
+          box-shadow: 0 0 30px rgba(90, 155, 255, 0.7);
+        }
+
+        /* PHANTOM BERRY – 퍼플 네온 */
+        .slide.flavor-berry.position-3:hover {
+          box-shadow: 0 0 30px rgba(185, 110, 255, 0.3);
+        }
+
+
+
+        /* 슬라이더 양옆 화살표 색상 바꾸기 */
+        .left-arrow i,
+        .right-arrow i {
+            color: #ffffff;     /* 👉 원하는 색으로 변경 */
+            text-shadow: 0 0 10px #80aaff;
+            transition: all 0.5s ease;
+        }
+
+        .left-arrow:hover i,
+        .right-arrow:hover i {
+            color: #ffffff;     /* 👉 호버 시 색 */
+        }
+
+
+        /* 슬라이더 화살표 위치 중앙 캔 양옆으로 재배치 */
+        .slider-container {
+          position: relative; /* 기준 잡기 */
+        }
+
+        .left-arrow,
+        .right-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 48px;
+          height: 48px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+
+
+        /* 슬라이더 레이어 정리 */
+        .slider-content {
+          position: relative;
+          z-index: 1;   /* 슬라이드는 아래 */
+        }
+
+        .left-arrow,
+        .right-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 48px;
+          height: 48px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 5;   /* 👉 화살표를 슬라이드보다 위로 올림 */
+        }
+
+        /* 위치 튜닝 (가운데 캔 양옆) */
+        .left-arrow {
+          left: calc(50% - 200px);
+        }
+
+        .right-arrow {
+          left: calc(50% + 160px);
+        }
+    </style>
 </head>
 
 <body>
     <div id="wrap">
 
-        <!-- header -->
         <div class="header">
             <div class="inner_header">
                 <ul class="gnb_left">
@@ -49,18 +1569,17 @@
                     <li><a href="#community">COMMUNITY</a></li>
                 </ul>
             </div>
-        </div><!-- header -->
-
-        <!-- main_banner -->
+        </div>
         <div class="main_banner">
             <div class="inner_main_banner">
-                <img src="./images/0207_final.mp4" alt="main_banner">
-                <a href="#" class="play_button"><img src="./images/play_button.png" alt="play_button"></a>
+                <video id="mainVideo" src="./images/0207_final.mp4" autoplay muted loop playsinline></video>
+                <button class="vdo_ctrl" title="Sound Toggle">
+                    <i class="fa fa-volume-off"></i>
+                </button>
             </div>
         </div>
-        <!-- 아래부터덮는부분 -->
+        </div>
         <div class="page_content">
-            <!-- slogoan1 -->
             <div class="slogan1">
                 <div class="inner_slogan">
                     <h2>“Carry on your style, Carry on your energy.”</h2>
@@ -68,10 +1587,7 @@
                         휴대성과 퍼포먼스를 겸비한 하이엔드 오브제 드링크, CARRYON
                     </p>
                 </div>
-            </div><!-- slogan1 -->
-
-            <!--structure  -->
-            <div class="structure" id="design">
+            </div><div class="structure" id="design">
                 <div class="inner_structure">
                     <div class="text_wrap">
                         <h3 class="title">structure</h3>
@@ -87,17 +1603,12 @@
                         </ul>
 
 
-                    </div><!-- text_wrap -->
-                    <div class="img_wrap">
+                    </div><div class="img_wrap">
                         <img src="./images/structure.gif" alt="">
 
                     </div>
                 </div>
-            </div><!-- structure -->
-
-
-            <!-- tech spec -->
-            <div class="tech_spec">
+            </div><div class="tech_spec">
                 <div class="inner_tech_spec">
                     <h3 class="title">tech spec</h3>
                     <h2 class="sub_title">정밀함으로 완성된 구조</h2>
@@ -114,10 +1625,7 @@
                     </ul>
 
                 </div>
-            </div><!-- tech spec -->
-
-            <!-- slogan2 -->
-            <div class="slogan2">
+            </div><div class="slogan2">
                 <div class="inner_slogan">
                     <h2>“beyond function, into sensation.”</h2>
                     <p>
@@ -125,11 +1633,7 @@
                     </p>
 
                 </div>
-            </div><!-- slogan2 -->
-
-
-            <!-- flavor -->
-            <div class="flavor" id="flavor">
+            </div><div class="flavor" id="flavor">
                 <div class="inner_flavor">
                     <h3 class="title">flavor</h3>
                     <h2 class="sub_title">향으로 구분되는 순간</h2>
@@ -139,7 +1643,6 @@
         <div class="left-arrow"><i class="fa fa-angle-left" style="font-size:24px"></i></div>
         <div class="slider-content" id='slider-content'>
 
-            <!-- 1. MATTE BLACK -->
             <div class="slide flavor-black">
                 <div class="media">
                     <img src="./images/flavor1.png" alt="flavor1">
@@ -170,7 +1673,6 @@
                 </div>
             </div>
 
-            <!-- 2. AMBER ORANGE -->
             <div class="slide flavor-orange">
                 <div class="media">
                     <img src="./images/flavor2.png" alt="flavor2">
@@ -198,7 +1700,6 @@
                 </div>
             </div>
 
-            <!-- 3. METALLIC SILVER -->
             <div class="slide flavor-silver">
                 <div class="media">
                     <img src="./images/flavor3.png" alt="flavor3">
@@ -226,7 +1727,6 @@
                 </div>
             </div>
 
-            <!-- 4. ICE BLUE -->
             <div class="slide flavor-blue">
                 <div class="media">
                     <img src="./images/flavor4.png" alt="flavor4">
@@ -254,7 +1754,6 @@
                 </div>
             </div>
 
-            <!-- 5. PHANTOM BERRY -->
             <div class="slide flavor-berry">
                 <div class="media">
                     <img src="./images/flavor5.png" alt="flavor5">
@@ -283,7 +1782,6 @@
                 </div>
             </div>
 
-            <!-- 반복 슬라이드들도 같은 맛별 클래스 붙여서 복제 -->
             <div class="slide flavor-black">
                 <div class="media">
                     <img src="./images/flavor1.png" alt="flavor1">
@@ -432,12 +1930,7 @@
 
 
 
-                </div><!-- inner_flavor -->
-
-            </div><!-- flavor -->
-
-            <!-- promotion -->
-            <div class="promotion" id="promotion">
+                </div></div><div class="promotion" id="promotion">
                 <div class="inner_promotion">
                     <h3 class="title">promotion</h3>
                     <h2 class="sub_title">움직임으로 전하는 경험</h2>
@@ -457,22 +1950,17 @@
                         </li>
                     </ul>
                 </div>
-            </div><!-- promotion -->
-
-            <!-- goods -->
-            <div class="goods">
+            </div><div class="goods">
                 <div class="inner_goods">
                     <h3 class="title">goods</h3>
                     <h2 class="sub_title">기능이 머무는 또 하나의 형태</h2>
                     <ul class="product">
                         <li>
                             <div class="cover_wrap">
-                                <!-- position 기준 -->
                                 <div class="img_wrap">
                                     <img src="./images/goods1.jpg" alt="goods">
                                 </div>
                                 <div class="cover">
-                                    <!-- position 검은배경 -->
                                     <p>
                                     <p><strong>CARRYON CAP</strong><br><br>
                                         Grip your focus.<br>
@@ -480,17 +1968,13 @@
                                         Limited Batch / 2025 Edition</p>
                                     <a href="#">자세히보기</a>
                                 </div>
-                            </div><!-- cover_wrap -->
-
-                        </li>
+                            </div></li>
                         <li>
                             <div class="cover_wrap">
-                                <!-- position 기준 -->
                                 <div class="img_wrap">
                                     <img src="./images/goods2.png" alt="goods">
                                 </div>
                                 <div class="cover">
-                                    <!-- position 검은배경 -->
                                     <p>
                                     <p><strong>CARRYON CARABINER</strong><br><br>
                                         Carry light, climb stronger.<br>
@@ -498,17 +1982,13 @@
                                         Limited Batch / 2025 Edition</p>
                                     <a href="#">자세히보기</a>
                                 </div>
-                            </div><!-- cover_wrap -->
-
-                        </li>
+                            </div></li>
                         <li>
                             <div class="cover_wrap">
-                                <!-- position 기준 -->
                                 <div class="img_wrap">
                                     <img src="./images/goods3.jpg" alt="goods">
                                 </div>
                                 <div class="cover">
-                                    <!-- position 검은배경 -->
                                     <p> <strong>carryon T-SHIRT </strong> <br> <br>
                                         Wear the current. <br>
                                         Move like energy itself. <br> <br>
@@ -516,14 +1996,10 @@
                                         Limited Batch / 2025 Edition</p>
                                     <a href="#">자세히보기</a>
                                 </div>
-                            </div><!-- cover_wrap -->
-                        </li>
+                            </div></li>
                     </ul>
                 </div>
-            </div><!-- goods -->
-
-            <!-- membership -->
-            <div class="membership" id="community">
+            </div><div class="membership" id="community">
                 <div class="inner_membership">
                     <div class="text_wrap">
                         <h3 class="title">membership</h3>
@@ -534,8 +2010,7 @@
 
 
 
-                    </div><!-- text_wrap -->
-                    <div class="img_wrap">
+                    </div><div class="img_wrap">
                         <img src="./images/membership.gif" alt="">
 
                     </div>
@@ -543,10 +2018,7 @@
 
 
                 </div>
-            </div><!-- membership -->
-
-            <!-- sns -->
-            <div class="sns">
+            </div><div class="sns">
                 <div class="inner_sns">
                     <h3 class="title">sns</h3>
                     <h2 class="sub_title">멈추지 않는 흐름의 끝에서</h2>
@@ -573,21 +2045,16 @@
                         </li>
                     </ul>
                 </div>
-            </div><!-- sns -->
-            <!-- faq -->
-            <div class="faq" id="faq">
+            </div><div class="faq" id="faq">
                 <div class="inner_faq">
                     <h3 class="title">faq</h3>
                     <h2 class="sub_title">자주 묻는 질문</h2>
 
                     <ul class="faq_list">
                         <li class="faq-item">
-                            <div class="faq-q"><!-- 질문 -->
-                                Q. CARRYON은 어떤 음료인가요?
+                            <div class="faq-q">Q. CARRYON은 어떤 음료인가요?
                             </div>
-                            <div class="faq-a"><!-- 답변 래퍼 -->
-                                <div class="faq-panel"><!-- 내려오는 판 -->
-                                    <span>“손에 쥐는 시원함, 집중을 깨우는 한 모금.”</span><br>
+                            <div class="faq-a"><div class="faq-panel"><span>“손에 쥐는 시원함, 집중을 깨우는 한 모금.”</span><br>
                                     CARRYON은 이동 중에도 흐트러지지 않는 컨디션을 위해 설계된 프리미엄 에너지 드링크입니다.<br>
                                     강한 쿨링감과 깨끗한 맛을 중심에 두었고, 필요할 때 바로 ‘각성’과 ‘집중’을 끌어올려 주는 포뮬러가 특징입니다.<br>
                                     캔 자체도 <span>휴대성</span>과 <span>완성도</span>를 고려해 만들어져,
@@ -667,12 +2134,7 @@
                             </div>
                         </li>
                     </ul>
-                </div><!-- inner_faq -->
-            </div><!-- faq -->
-
-
-            <!-- footer -->
-            <div class="footer">
+                </div></div><div class="footer">
                 <div class="inner_footer">
                     <ul class="footer_list">
                         <li>
@@ -706,25 +2168,483 @@
             <div class="scroll-bar"></div>
         </div>
 
-    </div><!-- wrap -->
+    </div><script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <script>
+        $(function () {
+            // 🔥 [추가부분 1] 비디오 객체 및 버튼 선택
+            const $video = $('#mainVideo')[0];
+            const $soundBtn = $('.vdo_ctrl');
+            const $soundIcon = $soundBtn.find('i');
+
+            // 🔥 [추가부분 2] 음소거 토글 로직
+            $soundBtn.on('click', function () {
+                if ($video.muted) {
+                    $video.muted = false;
+                    $soundIcon.removeClass('fa-volume-off').addClass('fa-volume-up');
+                } else {
+                    $video.muted = true;
+                    $soundIcon.removeClass('fa-volume-up').addClass('fa-volume-off');
+                }
+            });
+
+            // ⚠️ [수정된 부분] 스크롤 시 비디오 자동 일시정지 (Fixed 포지션 대응)
+            $(window).on('scroll', function() {
+                const scrollTop = $(this).scrollTop();
+                const bannerHeight = $('.main_banner').outerHeight();
+                
+                // 스크롤이 배너 높이를 넘어가서 영상이 가려지면 정지, 아니면 재생
+                if (scrollTop > bannerHeight) {
+                    if (!$video.paused) $video.pause();
+                } else {
+                    // 크롬 정책상 재생 시 Promise 에러 방지 처리
+                    const playPromise = $video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {}); 
+                    }
+                }
+            });
+
+            $('.faq-q').on('click', function () {
+                const $item = $(this).closest('.faq-item');
+                const $wrap = $item.find('.faq-a');
+                const $panel = $wrap.find('.faq-panel');
+                const isOpen = $item.hasClass('open');
+
+                /* 이미 열려 있는 항목 닫기 (한 개만 열리는 아코디언) */
+                $('.faq-item.open').each(function () {
+                    $(this)
+                        .removeClass('open')
+                        .find('.faq-a')
+                        .css('max-height', 0);
+                });
+
+                if (!isOpen) {
+                    /* 실제 panel 높이 계산 */
+                    const panelHeight = $panel.outerHeight(true);
+
+                    /* 래퍼 높이를 실제 높이로 맞춤 */
+                    $wrap.css('max-height', panelHeight + 'px');
+
+                    /* open 클래스 부여 */
+                    $item.addClass('open');
+                } else {
+                    /* 다시 누르면 닫기 */
+                    $wrap.css('max-height', 0);
+                    $item.removeClass('open');
+                }
+            });
+
+            // 헤더 축소 스크롤 처리
+           const $header = $('.header');
+            const $logo   = $('.main_logo img');
+            const normalSrc = $logo.data('logo-normal');   // ./images/logo_main.png
+            const smallSrc  = $logo.data('logo-small');    // ./images/logo_compact.png
+            const threshold = 900; // 축소 시작 스크롤 위치
+
+            $(window).on('scroll', function () {
+                const scrollY = $(this).scrollTop();
+
+                if (scrollY > threshold) {
+                    if (!$header.hasClass('header--small')) {
+                        $header.addClass('header--small');
+                        $logo.attr('src', smallSrc);   // 👉 축소 로고로 변경
+                    }
+                } else {
+                    if ($header.hasClass('header--small')) {
+                        $header.removeClass('header--small');
+                        $logo.attr('src', normalSrc);  // 👉 원래 로고로 복귀
+                    }
+                }
+            });
+
+            
+        });
 
 
 
-    <!-- jQuery 연결 -->
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/script.js"></script>
-    <!-- aos 실행 -->
+        // This slider is for atleast 5 numbers of slides to n numbers of slides
+        // you can go through by clicking left or right button or swipe left or right
+          console.clear()
+        var sliders = document.querySelectorAll(".slide");
+        var center = Math.floor(sliders.length / 2);
+        var leftEndBack = center - 3 >= 0? center - 3 : undefined;
+        var leftEnd = center - 2 >= 0? center - 2 : undefined;
+        var leftMid = center - 1 >= 0? center - 1 : undefined;
+        var rightMid = center + 1 < sliders.length? center + 1 : undefined;
+        var rightEnd = center + 2 < sliders.length? center + 2 : undefined;
+        var rightEndBack = center + 3 < sliders.length? center + 3 : undefined;
+        let touchstartX = 0
+        let touchendX = 0
+        let container = document.getElementById('slider-content');
+        let i = 0
+        let j = 0
+        var time = 0;
+
+
+        while (j != center + 1) {
+          setTimeout(() => {
+            if (i - 3 >= 0) {
+              sliders[i - 3].classList.add("position-none");
+              sliders[i - 3].classList.remove("position-1");
+            }
+            if (i - 2 >= 0) {
+              sliders[i - 2].classList.add("position-1");
+              sliders[i - 2].classList.remove("position-2");
+            }
+            if (i - 1 >= 0) {
+              sliders[i - 1].classList.add("position-2");
+              sliders[i - 1].classList.remove("position-3");
+            }
+
+            // i (중앙)
+            if (i < sliders.length) {
+              sliders[i].classList.add("position-3");
+              sliders[i].classList.remove("position-4");
+            }
+
+            // i+1
+            if (i + 1 < sliders.length) {
+              sliders[i + 1].classList.add("position-4");
+              sliders[i + 1].classList.remove("position-5");
+            }
+
+            // i+2
+            if (i + 2 < sliders.length) {
+              sliders[i + 2].classList.add("position-5");
+              sliders[i + 2].classList.remove("position-none");
+            }
+
+            // i+3 (여기가 문제였음)
+            if (i + 3 < sliders.length) {
+              sliders[i + 3].classList.add("position-none");
+            }
+
+            i++;
+          }, j * 350);
+          j++;
+        }
+
+
+
+        if (sliders.length > 0) $('.slide').addClass('position-none');
+
+
+        function leftScroll(){
+          
+          if(leftEndBack != undefined){
+            sliders[leftEndBack].classList.remove("position-none");
+            sliders[leftEndBack].classList.add("position-1");
+          }
+          else{
+            sliders[rightEnd].classList.remove("position-none");
+            sliders[rightEnd].classList.add("position-1");
+          }
+          
+          if(leftEnd != undefined){
+            sliders[leftEnd].classList.remove("position-1");
+            sliders[leftEnd].classList.add("position-2");
+          }
+          
+          if(leftMid != undefined){
+            sliders[leftMid].classList.remove("position-2");
+            sliders[leftMid].classList.add("position-3");
+          }
+          
+          if(center != undefined){
+            sliders[center].classList.remove("position-3");
+            sliders[center].classList.add("position-4");
+          }
+          
+          if(rightMid != undefined){
+            sliders[rightMid].classList.remove("position-4");
+            sliders[rightMid].classList.add("position-5");
+          }
+          
+          if(rightEnd != undefined){
+            sliders[rightEnd].classList.remove("position-5");
+            sliders[rightEnd].classList.add("position-none");
+          }
+          // if(rightEndBack != undefined){
+          //   sliders[rightEndBack].classList.remove("position-5");
+          //   sliders[rightEndBack].classList.add("position-none");
+          // }
+          
+          leftEndBack != undefined ? leftEndBack-- : leftEndBack;
+          leftEnd != undefined? leftEnd-- : leftEnd;
+          leftMid != undefined? leftMid-- : leftMid;
+          center != undefined? center-- : center;
+          rightMid != undefined? rightMid-- : rightMid;
+          rightEnd != undefined? rightEnd-- : rightEnd;
+          rightEndBack != undefined ? rightEndBack-- : rightEndBack;
+          
+          if(leftEndBack != undefined && leftEndBack == -1)
+            leftEndBack = sliders.length - 1;
+          if(leftEnd != undefined && leftEnd == -1)
+            leftEnd = sliders.length - 1;
+          if(leftMid != undefined && leftMid == -1)
+            leftMid = sliders.length - 1;
+          if(center != undefined && center == -1)
+            center = sliders.length - 1;
+          if(rightMid != undefined && rightMid == -1)
+            rightMid = sliders.length - 1;
+          if(rightEnd != undefined && rightEnd == -1)
+            rightEnd = sliders.length - 1;
+          if(rightEndBack != undefined && rightEndBack == -1)
+            rightEndBack = sliders.length - 1;
+        }
+
+        function rightScroll(){
+          
+          if(leftEnd != undefined){
+            sliders[leftEnd].classList.remove("position-1");
+            sliders[leftEnd].classList.add("position-none");
+          }  
+          if(leftMid != undefined){
+            sliders[leftMid].classList.remove("position-2");
+            sliders[leftMid].classList.add("position-1");
+          }  
+          if(center != undefined){
+            sliders[center].classList.remove("position-3");
+            sliders[center].classList.add("position-2");
+          }  
+          if(rightMid != undefined){
+            sliders[rightMid].classList.remove("position-4");
+            sliders[rightMid].classList.add("position-3");
+          }  
+          if(rightEnd != undefined){
+            sliders[rightEnd].classList.remove("position-5");
+            sliders[rightEnd].classList.add("position-4");
+          }
+          if(rightEndBack != undefined){
+            sliders[rightEndBack].classList.remove("position-none");
+            sliders[rightEndBack].classList.add("position-5");
+          }
+          else if(leftEndBack != undefined){
+            sliders[leftEndBack].classList.remove("position-none");
+            sliders[leftEndBack].classList.add("position-5");
+          }
+          else{
+            sliders[leftEnd].classList.remove("position-none");
+            sliders[leftEnd].classList.add("position-5");
+          }
+          
+          leftEndBack != undefined? leftEndBack++ : leftEndBack;
+          leftEnd != undefined? leftEnd++ : leftEnd;
+          leftMid != undefined? leftMid++ : leftMid;
+          center != undefined? center++ : center;
+          rightMid != undefined? rightMid++ : rightMid;
+          rightEnd != undefined? rightEnd++ : rightEnd;
+          rightEndBack != undefined? rightEndBack++ : rightEndBack;
+
+          if(leftEndBack != undefined && leftEndBack == sliders.length)
+            leftEndBack = 0;
+          if(leftEnd != undefined && leftEnd == sliders.length)
+            leftEnd = 0;
+          if(leftMid != undefined && leftMid == sliders.length)
+            leftMid = 0;
+          if(center != undefined && center == sliders.length)
+            center = 0;
+          if(rightMid != undefined && rightMid == sliders.length)
+            rightMid = 0;
+          if(rightEnd != undefined && rightEnd == sliders.length)
+            rightEnd = 0;
+          if(rightEndBack != undefined && rightEndBack == sliders.length)
+            rightEndBack = 0;
+        }
+
+        class Swipe {
+            constructor(element) {
+                this.xDown = null;
+                this.yDown = null;
+                this.element = typeof(element) === 'string' ? document.querySelector(element) : element;
+
+                this.element.addEventListener('touchstart', function(evt) {
+                    this.xDown = evt.touches[0].clientX;
+                    this.yDown = evt.touches[0].clientY;
+                }.bind(this), false);
+
+            }
+
+            onLeft(callback) {
+                this.onLeft = callback;
+
+                return this;
+            }
+
+            onRight(callback) {
+                this.onRight = callback;
+
+                return this;
+            }
+
+            handleTouchMove(evt) {
+                if ( ! this.xDown || ! this.yDown ) {
+                    return;
+                }
+
+                var xUp = evt.touches[0].clientX;
+                var yUp = evt.touches[0].clientY;
+
+                this.xDiff = this.xDown - xUp;
+                this.yDiff = this.yDown - yUp;
+
+                if ( Math.abs( this.xDiff ) > Math.abs( this.yDiff ) ) { 
+                    if ( this.xDiff > 0 ) {
+                        this.onLeft();
+                    } else {
+                        this.onRight();
+                    }
+                } else {
+                    if ( this.yDiff > 0 ) {
+                        this.onUp();
+                    } else {
+                        this.onDown();
+                    }
+                }
+
+                this.xDown = null;
+                this.yDown = null;
+            }
+
+            run() {
+                this.element.addEventListener('touchmove', function(evt) {
+                    this.handleTouchMove(evt).bind(this);
+                }.bind(this), false);
+            }
+        }
+
+        var swiper = new Swipe(container);
+
+
+        //left scroll
+        $(".left-arrow").on("click", () => {
+          setTimeout(() => {
+            if(time + 500 < Date.now()){
+              time = Date.now()
+              leftScroll()
+            }
+          } , 0)
+
+        });
+
+        swiper.onRight(function () {
+          leftScroll();
+        });
+        swiper.run();
+
+
+        // right scroll
+        $(".right-arrow").on("click", () => {
+          setTimeout(() => {
+            if(time + 500 < Date.now()){
+              time = Date.now()
+              rightScroll()
+            }
+          } , 0)
+        });
+
+        swiper.onLeft(function () {
+          rightScroll();
+        });
+        swiper.run();
+
+        function knowMoreToggle (position){
+          const slide = document.querySelectorAll('.slide')[position]
+          slide.classList.toggle('active')
+        }
+
+        let dragStartX = null;
+
+        container.addEventListener('mousedown', (e) => {
+          dragStartX = e.clientX;
+        });
+
+        container.addEventListener('mouseup', (e) => {
+          if (dragStartX === null) return;
+          const diffX = dragStartX - e.clientX;
+
+          // 어느 정도 이상 움직였을 때만 동작 (예: 50px)
+          if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+              // 왼쪽으로 드래그 → 다음 슬라이드
+              rightScroll();
+            } else {
+              // 오른쪽으로 드래그 → 이전 슬라이드
+              leftScroll();
+            }
+          }
+          dragStartX = null;
+        });
+
+        container.addEventListener('mouseleave', () => {
+          dragStartX = null;
+        });
+
+
+        $('.gnb_left a, .gnb_right a').on('click', function (e) {
+            const targetId = $(this).attr('href');
+
+            if (!targetId || targetId === '#') return;
+
+            const $target = $(targetId);
+            if ($target.length === 0) return;
+
+            e.preventDefault();
+
+            const headerHeight = $('.header').outerHeight();
+            const targetTop = $target.offset().top - headerHeight - 20;
+
+            $('html, body').stop().animate(
+                { scrollTop: targetTop },
+                2000,
+                'easeOutQuint'
+            );
+        });
+
+        document.getElementById("topBtn").onclick = () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        };
+
+
+        // Scroll Indicator
+        $(window).on('scroll', function () {
+            const docHeight = $(document).height() - $(window).height();
+            const scrollTop = $(window).scrollTop();
+            const scrollPercent = (scrollTop / docHeight) * 100;
+
+            $('.scroll-bar').css('height', scrollPercent + '%');
+        });
+
+        // 🔥 스크롤 감지해서 glow ON/OFF
+        $(window).on('scroll', function () {
+            const scrollTop = $(this).scrollTop();
+            const docHeight = $(document).height();
+            const winHeight = $(window).height();
+
+            const isBottom = scrollTop + winHeight >= docHeight - 10;
+
+            if (isBottom) {
+                $("#topBtn").addClass("glow");
+            } else {
+                $("#topBtn").removeClass("glow");
+            }
+        });
+
+        // 🔼 TOP 버튼 클릭 시 부드럽게 최상단으로 이동
+        $("#topBtn").on("click", function () {
+            $('html, body').animate({ scrollTop: 0 }, 3000, 'easeOutQuint');
+        });
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
-    <!-- easing 플러그인 추가 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
-
-
-
 </body>
-
 
 </html>
